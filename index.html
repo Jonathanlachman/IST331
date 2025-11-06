@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Self-Checkout (Mock)</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="appbar">
+    <strong class="appbar__title">Self-Checkout</strong>
+    <div class="appbar__spacer"></div>
+    <button class="btn-icon" id="accessBtn" title="Accessibility">🧩 <span>Accessibility</span></button>
+    <button class="btn-icon" id="helpBtn" title="Help">⚠️ <span>Help</span></button>
+</div>
+<div class="notice">
+    NOTICE: This checkout station is actively monitored through our AI-assisted interface to ensure your security and provide immediate support when needed.
+</div>
+
+<main class="shell">
+    <section class="card" aria-labelledby="welcome">
+        <div class="logo">🛒</div>
+        <h1 id="welcome">Welcome to Self-Checkout</h1>
+        <p class="sub">Complete your purchase quickly and easily</p>
+        <div>
+            <button class="primary" id="scanBtn">Ready to Scan</button>
+            <script>
+                const scanButton = document.getElementById('scanBtn');
+                scanButton.addEventListener('click', () => {
+                    window.location.href = 'checkout.html';
+                });
+            </script>
+            <button class="ghost" id="memberBtn">🪪 Add Membership ID</button>
+        </div>
+        <div class="lang-row" role="group" aria-label="Language">
+            <button class="lang active" data-lang="en">🌐 English</button>
+            <button class="lang" data-lang="es">🌐 Español</button>
+            <button class="lang" data-lang="fr">🌐 Français</button>
+        </div>
+    </section>
+    <section class="steps" aria-label="How it works">
+        <article class="step">
+            <div class="bubble">1</div>
+            <h3>Scan Items</h3>
+            <p class="muted">Scan barcodes or enter codes manually</p>
+        </article>
+        <article class="step">
+            <div class="bubble">2</div>
+            <h3>Review Order</h3>
+            <p class="muted">Check your items and total amount</p>
+        </article>
+        <article class="step">
+            <div class="bubble">3</div>
+            <h3>Pay &amp; Go</h3>
+            <p class="muted">Choose payment method and complete</p>
+        </article>
+    </section>
+
+    <p class="helpbar">Need assistance? Press the <button id="inlineHelp">Help</button> button or ask a store associate.</p>
+</main>
+
+<dialog id="dlgMember" aria-labelledby="dlgMemberTitle">
+    <div class="dlg__hd" id="dlgMemberTitle">Add Membership ID</div>
+    <div class="dlg__bd">
+        <label for="memberInput" class="muted">Enter your membership number</label>
+        <input id="memberInput" type="text" placeholder="e.g., 1234 5678 9012" />
+    </div>
+    <div class="dlg__ft">
+        <button class="btn" data-close>Cancel</button>
+        <button class="btn primary" id="saveMember">Save</button>
+    </div>
+</dialog>
+
+<dialog id="dlgHelp" aria-labelledby="dlgHelpTitle">
+    <div class="dlg__hd" id="dlgHelpTitle">Help</div>
+    <div class="dlg__bd">
+        <p>• Scan each item’s barcode and place it in the bagging area.<br>
+            • Use “Review Order” to remove items or adjust quantity.<br>
+            • When finished, press “Pay &amp; Go”.</p>
+    </div>
+    <div class="dlg__ft">
+        <button class="btn primary" data-close>Got it</button>
+    </div>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
