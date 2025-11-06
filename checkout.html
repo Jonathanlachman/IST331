@@ -1,3 +1,4 @@
+<!-- Jonathan Lachman -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,6 @@
     <link rel="stylesheet" href="styles2.css" />
 </head>
 <body>
-<!-- Top bars -->
 <header class="appbar">
     <strong>Self-Checkout</strong>
     <div class="spacer"></div>
@@ -17,25 +17,18 @@
 <div class="notice">
     <span>👁️‍🗨️ <b>NOTICE:</b> This checkout station is actively monitored through our AI-assisted interface to ensure your security and provide immediate support when needed.</span>
 </div>
-
-<!-- Two-column layout -->
 <main class="layout">
-    <!-- LEFT: workstation -->
     <section class="work">
-        <!-- scan pad -->
         <div class="card pad">
             <div class="pad-area">
                 <div class="pad-icon">◻︎</div>
                 <div class="pad-text">Scan an item or enter barcode</div>
             </div>
-
             <div class="pad-entry">
                 <input id="barcode" type="text" placeholder="Enter barcode manually" />
                 <button id="lookup" class="btn btn-primary">🔎 Lookup</button>
             </div>
         </div>
-
-        <!-- actions -->
         <div class="actions">
             <button class="tile" id="weighBtn">
                 <div class="tile-icon">⚖️</div>
@@ -46,15 +39,11 @@
                 <div class="tile-title">Find Item</div>
             </button>
         </div>
-
-        <!-- quick add -->
         <div class="card qa">
             <div class="qa-head">Quick Add (Demo)</div>
             <div class="qa-list" id="quickList"></div>
         </div>
     </section>
-
-    <!-- RIGHT: cart -->
     <aside class="cart">
         <div class="cart-head">Your Items</div>
 
@@ -74,11 +63,18 @@
         <div class="cart-cta">
             <button id="payBtn" class="btn btn-success">Proceed to Payment</button>
             <button id="cancelBtn" class="btn btn-ghost">Cancel Transaction</button>
+            <script>
+                document.getElementById('cancelBtn').addEventListener('click', function() {
+                    if (confirm("Are you sure you want to cancel this transaction and return to the welcome screen?")) {
+                        window.location.href = 'index.html';
+                    }
+                });
+            </script>
+
         </div>
     </aside>
 </main>
 
-<!-- Dialogs -->
 <dialog id="dlgWeigh" class="dialog">
     <div class="dlg-hd">Weigh Item</div>
     <div class="dlg-bd">
@@ -116,7 +112,6 @@
         <button data-close class="btn btn-primary">Got it</button>
     </div>
 </dialog>
-
 <script src="app2.js"></script>
 </body>
 </html>
